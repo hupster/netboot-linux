@@ -4,3 +4,5 @@ initramfs-tools
 pxelinux
 syslinux-common
 syslinux-efi
+dbus
+libpam-systemd
