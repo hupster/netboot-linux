@@ -28,7 +28,7 @@ The architecture does not need to match the host architecture.
 overlay/root/packages
 ```
 
-Default is a minimum install with console only.
+Default is a minimum install with only Clonezilla and its dependencies.
 
 # Install
 
