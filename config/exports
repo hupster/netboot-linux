@@ -1,1 +1,2 @@
 TARGET_DIR IP_NETMASK(ro,async,no_root_squash,no_subtree_check)
+IMAGES_DIR IP_NETMASK(rw,async,no_root_squash,no_subtree_check)

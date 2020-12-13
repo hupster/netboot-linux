@@ -2,6 +2,7 @@
 
 DIR=$PWD
 TARGET_DIR=${DIR}/target
+IMAGES_DIR=${DIR}/images
 IP_NETMASK=`ip -o -f inet addr show scope global | awk '{print $4}'`
 IP_BROADCAST=`ip -o -f inet addr show scope global | awk '{print $6}'`
 
@@ -54,5 +55,7 @@ systemctl restart dnsmasq
 cp -b ${DIR}/config/exports /etc/
 sed -i -e "s~IP_NETMASK~${IP_NETMASK}~g" /etc/exports
 sed -i -e "s~TARGET_DIR~${TARGET_DIR}~g" /etc/exports
+sed -i -e "s~IMAGES_DIR~${IMAGES_DIR}~g" /etc/exports
+mkdir -p ${IMAGES_DIR}
 echo "updated /etc/exports, restarting nfs-kernel-server ..."
 systemctl restart nfs-kernel-server

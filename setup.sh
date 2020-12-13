@@ -6,6 +6,7 @@ MIRROR="http://ftp.debian.org/debian/"
 
 DIR=$PWD
 TARGET_DIR=${DIR}/target
+IMAGES_DIR=${DIR}/images
 CORES=$(getconf _NPROCESSORS_ONLN)
 IP_ADDRESS=$(ip route get 1 | awk '{print $NF;exit}')
 
@@ -65,6 +66,10 @@ cp -PR ${DIR}/overlay/* ${TARGET_DIR}/
 # update pxe config
 sed -i -e "s~IP_ADDRESS~${IP_ADDRESS}~g" ${TARGET_DIR}/pxelinux.cfg/default
 sed -i -e "s~TARGET_DIR~${TARGET_DIR}~g" ${TARGET_DIR}/pxelinux.cfg/default
+
+# update mounts config
+sed -i -e "s~IP_ADDRESS~${IP_ADDRESS}~g" ${TARGET_DIR}/etc/fstab
+sed -i -e "s~IMAGES_DIR~${IMAGES_DIR}~g" ${TARGET_DIR}/etc/fstab
 
 # enable autologin
 sed -i -e 's/ExecStart=.*/ExecStart=\/sbin\/agetty -a root --noclear %I $TERM/g' ${TARGET_DIR}/lib/systemd/system/getty@.service
