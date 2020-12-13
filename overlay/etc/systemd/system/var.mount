@@ -1,0 +1,14 @@
+[Unit]
+Description = mounts var overlay
+After = systemd-tmpfiles-setup.service
+Requires = systemd-tmpfiles-setup.service
+Conflicts = umount.target
+
+[Mount]
+What = overlay
+Where = /var
+Type = overlay
+Options = lowerdir=/var,upperdir=/tmp/var_upper,workdir=/tmp/var_work
+
+[Install]
+WantedBy = multi-user.target

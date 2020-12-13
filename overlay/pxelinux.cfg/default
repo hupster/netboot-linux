@@ -1,0 +1,4 @@
+default linux
+label linux
+    kernel vmlinuz
+    append root=/dev/nfs initrd=initrd.img nfsroot=IP_ADDRESS:TARGET_DIR ro panic=60

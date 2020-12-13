@@ -1,0 +1,6 @@
+nfs-common
+linux-image-amd64
+initramfs-tools
+pxelinux
+syslinux-common
+syslinux-efi
